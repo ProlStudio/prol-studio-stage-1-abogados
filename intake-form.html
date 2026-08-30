@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROL — Brief de proyecto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:   #0c0c0b;
+    --white:   #fafaf8;
+    --gray-50: #f4f4f2;
+    --gray-100:#e8e8e5;
+    --gray-200:#d0d0cc;
+    --gray-400:#9a9a96;
+    --gray-600:#5a5a57;
+    --gray-800:#282826;
+    --accent:  #0c0c0b;
+    --radius:  6px;
+    --radius-lg: 10px;
+    --radius-full: 999px;
+    --transition: 160ms ease;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Layout */
+  .page {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 6rem;
+  }
+
+  /* Header */
+  .header {
+    margin-bottom: 3.5rem;
+  }
+  .logo {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--black);
+    margin-bottom: 2.5rem;
+    display: block;
+  }
+  .header h1 {
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    color: var(--black);
+  }
+  .header p {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.6;
+  }
+
+  /* Progress */
+  .progress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .progress-label {
+    font-size: 11px;
+    color: var(--gray-400);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .progress-pct {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gray-400);
+  }
+  .progress-track {
+    height: 1px;
+    background: var(--gray-100);
+    border-radius: 1px;
+    margin-bottom: 3rem;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--black);
+    border-radius: 1px;
+    width: 0%;
+    transition: width 400ms ease;
+  }
+
+  /* Block */
+  .block {
+    margin-bottom: 2.5rem;
+  }
+  .block-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 0.5px solid var(--gray-100);
+  }
+
+  /* Fields */
+  .field {
+    margin-bottom: 1.125rem;
+  }
+  .field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 5px;
+  }
+  .hint {
+    font-size: 11px;
+    color: var(--gray-400);
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .req {
+    color: #c0392b;
+    font-size: 10px;
+    margin-left: 2px;
+  }
+  .opt {
+    font-size: 10px;
+    color: var(--gray-400);
+    background: var(--gray-50);
+    border-radius: var(--radius-full);
+    padding: 1px 7px;
+    margin-left: 5px;
+    font-weight: 400;
+    vertical-align: middle;
+  }
+
+  /* Inputs */
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 9px 12px;
+    border: 0.5px solid var(--gray-200);
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--black);
+    background: var(--white);
+    outline: none;
+    transition: border-color var(--transition);
+    appearance: none;
+  }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus,
+  select:focus {
+    border-color: var(--black);
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--gray-400);
+    font-weight: 300;
+  }
+  textarea {
+    resize: vertical;
+    line-height: 1.6;
+    min-height: 72px;
+  }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%239a9a96' stroke-width='1.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 11px center;
+    cursor: pointer;
+  }
+  select option[value=""] { color: var(--gray-400); }
+
+  /* Cards grid */
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 6px;
+  }
+  .card {
+    padding: 9px 11px;
+    border: 0.5px solid var(--gray-200);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all var(--transition);
+    background: var(--white);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    user-select: none;
+  }
+  .card:hover {
+    border-color: var(--gray-600);
+    background: var(--gray-50);
+  }
+  .card.on {
+    border-color: var(--black);
+    background: var(--gray-50);
+  }
+  .card input[type="radio"],
+  .card input[type="checkbox"] {
+    width: 13px;
+    height: 13px;
+    margin-top: 1px;
+    flex-shrink: 0;
+    accent-color: var(--black);
+    cursor: pointer;
+  }
+  .card-text {
+    font-size: 12px;
+    color: var(--black);
+    line-height: 1.3;
+    font-weight: 500;
+  }
+  .card-sub {
+    font-size: 11px;
+    color: var(--gray-400);
+    margin-top: 1px;
+    font-weight: 400;
+  }
+
+  /* Hidden field (Formspree needs name attrs) */
+  .hidden-field {
+    display: none;
+  }
+
+  /* Submit */
+  .submit-wrap {
+    margin-top: 2rem;
+  }
+  .validation-msg {
+    font-size: 12px;
+    color: #c0392b;
+    background: #fdf2f1;
+    border: 0.5px solid #f5c6c3;
+    padding: 8px 12px;
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    display: none;
+    line-height: 1.5;
+  }
+  .submit-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: var(--radius-full);
+    background: var(--black);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    border: none;
+    cursor: pointer;
+    transition: opacity var(--transition);
+    letter-spacing: 0.01em;
+  }
+  .submit-btn:hover { opacity: 0.82; }
+  .submit-btn:active { opacity: 0.7; }
+  .submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* Success state */
+  .success {
+    display: none;
+    text-align: center;
+    padding: 4rem 1rem;
+  }
+  .success-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 0.5px solid var(--gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    font-size: 16px;
+    color: var(--gray-600);
+  }
+  .success h2 {
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .success p {
+    font-size: 13px;
+    color: var(--gray-600);
+    line-height: 1.7;
+  }
+
+  /* Mobile */
+  @media (max-width: 480px) {
+    .page { padding: 2.5rem 1.25rem 5rem; }
+    .cards { grid-template-columns: 1fr; }
+    .header h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div id="form-section">
+    <!-- Header -->
+    <div class="header">
+      <span class="logo">PROL</span>
+      <h1>Contanos sobre tu proyecto</h1>
+      <p>Completar esto toma unos 5 minutos. Tus respuestas nos permiten empezar a trabajar sin reuniones previas.</p>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress">
+      <span class="progress-label" id="blk-name">Negocio</span>
+      <span class="progress-pct" id="pct-out">0%</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="pfill"></div>
+    </div>
+
+    <!-- Form -->
+    <form
+      id="intake-form"
+      action="https://formspree.io/f/xlgvoona"
+      method="POST"
+    >
+
+      <!-- Hidden computed fields -->
+      <input type="hidden" name="_subject" value="Nuevo brief — PROL">
+      <input type="hidden" name="template_asignado" id="h-template">
+      <input type="hidden" name="tono_visual" id="h-tono">
+      <input type="hidden" name="materiales_disponibles" id="h-mats">
+
+      <!-- Block 1 — Negocio -->
+      <div class="block">
+        <div class="block-label">Negocio</div>
+
+        <div class="field">
+          <label for="nombre">¿Cómo se llama tu negocio o proyecto? <span class="req">*</span></label>
+          <input type="text" id="nombre" name="nombre_negocio" placeholder="ej. Laura Costa Nutrición" autocomplete="organization">
+        </div>
+
+        <div class="field">
+          <label for="que">¿Qué hacés y a quién ayudás? <span class="req">*</span></label>
+          <div class="hint">Una o dos oraciones. Sin tecnicismos.</div>
+          <textarea id="que" name="descripcion" rows="2" placeholder="ej. Soy nutricionista y ayudo a mujeres ocupadas a perder peso sin dietas restrictivas"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="donde">¿Dónde operás? <span class="opt">opcional</span></label>
+          <input type="text" id="donde" name="ubicacion" placeholder="ej. Buenos Aires, Argentina — o en todo el mundo online">
+        </div>
+      </div>
+
+      <!-- Block 2 — Sitio web -->
+      <div class="block">
+        <div class="block-label">Sitio web</div>
+
+        <div class="field">
+          <label for="objetivo">¿Cuál es el objetivo principal de tu sitio? <span class="req">*</span></label>
+          <select id="objetivo" name="objetivo_sitio">
+            <option value="">Seleccioná un objetivo</option>
+            <option>Conseguir más clientes o consultas</option>
+            <option>Mostrar mi trabajo o portafolio</option>
+            <option>Vender un producto o servicio</option>
+            <option>Generar presencia y credibilidad</option>
+            <option>Reemplazar mi sitio actual</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>¿Qué tipo de sitio necesitás? <span class="req">*</span></label>
+          <div class="cards" id="tipo-cards">
+            <div class="card" onclick="radioCard(this,'Landing page')">
+              <input type="radio" name="tipo_sitio" value="Landing page">
+              <div><div class="card-text">Landing page</div><div class="card-sub">1 página, rápida y enfocada</div></div>
+            </div>
+            <div class="card" onclick="radioCard(this,'Portafolio')">
+              <input type="radio" name="tipo_sitio" value="Portafolio">
+              <div><div class="card-text">Portafolio</div><div class="card-sub">Mostrar trabajos y proyectos</div></div>
+            </div>
+            <div class="card" onclick="radioCard(this,'Sitio profesional')">
+              <input type="radio" name="tipo_sitio" value="Sitio profesional">
+              <div><div class="card-text">Sitio profesional</div><div class="card-sub">Servicios + sobre mí + contacto</div></div>
+            </div>
+            <div class="card" onclick="radioCard(this,'Sitio completo')">
+              <input type="radio" name="tipo_sitio" value="Sitio completo">
+              <div><div class="card-text">Sitio completo</div><div class="card-sub">Varias páginas, más contenido</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="cta">¿Qué querés que haga quien visita tu sitio? <span class="req">*</span></label>
+          <input type="text" id="cta" name="cta_principal" placeholder="ej. Agendar una llamada / Escribirme / Pedir presupuesto">
+        </div>
+      </div>
+
+      <!-- Block 3 — Contenido -->
+      <div class="block">
+        <div class="block-label">Contenido</div>
+
+        <div class="field">
+          <label for="servicios">¿Cuáles son tus servicios o productos principales? <span class="req">*</span></label>
+          <div class="hint">Uno por línea. Podés agregar una descripción corta.</div>
+          <textarea id="servicios" name="servicios" rows="5" placeholder="- Coaching nutricional online — programa de 3 meses&#10;- Consulta nutricional individual&#10;- Diseño de plan alimentario"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="about">Contanos un poco sobre vos o tu negocio <span class="opt">opcional</span></label>
+          <div class="hint">Escribí como si le hablaras a un cliente.</div>
+          <textarea id="about" name="about" rows="3" placeholder="ej. Soy Laura, nutricionista certificada con 8 años de experiencia..."></textarea>
+        </div>
+      </div>
+
+      <!-- Block 4 — Estilo visual -->
+      <div class="block">
+        <div class="block-label">Estilo visual</div>
+
+        <div class="field">
+          <label>¿Cómo querés que se sienta tu sitio? <span class="req">*</span> <span class="hint" style="display:inline">Elegí hasta 2.</span></label>
+          <div class="cards" style="margin-top:8px">
+            <div class="card" onclick="multiCard(this,'tono')"><input type="checkbox" class="tono-cb" value="Limpio y minimalista"><div class="card-text">Limpio y minimalista</div></div>
+            <div class="card" onclick="multiCard(this,'tono')"><input type="checkbox" class="tono-cb" value="Cálido y cercano"><div class="card-text">Cálido y cercano</div></div>
+            <div class="card" onclick="multiCard(this,'tono')"><input type="checkbox" class="tono-cb" value="Audaz y directo"><div class="card-text">Audaz y directo</div></div>
+            <div class="card" onclick="multiCard(this,'tono')"><input type="checkbox" class="tono-cb" value="Elegante y premium"><div class="card-text">Elegante y premium</div></div>
+            <div class="card" onclick="multiCard(this,'tono')"><input type="checkbox" class="tono-cb" value="Profesional y confiable"><div class="card-text">Profesional y confiable</div></div>
+            <div class="card" onclick="multiCard(this,'tono')"><input type="checkbox" class="tono-cb" value="Fresco y moderno"><div class="card-text">Fresco y moderno</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Block 5 — Referencias y materiales -->
+      <div class="block">
+        <div class="block-label">Referencias y materiales</div>
+
+        <div class="field">
+          <label for="refs">¿Hay sitios web que te gusten? <span class="opt">opcional</span></label>
+          <div class="hint">Pegá los links con una nota de qué te gusta.</div>
+          <textarea id="refs" name="referencias" rows="3" placeholder="https://ejemplo.com — me gusta el diseño limpio&#10;https://otro.com — me gusta la paleta de colores"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="email-cliente">Tu email <span class="req">*</span></label>
+          <div class="hint">Para que podamos responderte.</div>
+          <input type="email" id="email-cliente" name="email" placeholder="tu@email.com" autocomplete="email">
+        </div>
+
+        <div class="field">
+          <label>¿Qué tenés listo para compartir? <span class="opt">opcional</span></label>
+          <div class="cards" style="margin-top:6px">
+            <div class="card" onclick="multiCard(this,'mat')"><input type="checkbox" class="mat-cb" value="Logo"><div class="card-text">Logo (PNG o SVG)</div></div>
+            <div class="card" onclick="multiCard(this,'mat')"><input type="checkbox" class="mat-cb" value="Fotos profesionales"><div class="card-text">Fotos profesionales</div></div>
+            <div class="card" onclick="multiCard(this,'mat')"><input type="checkbox" class="mat-cb" value="Colores de marca"><div class="card-text">Colores de marca</div></div>
+            <div class="card" onclick="multiCard(this,'mat')"><input type="checkbox" class="mat-cb" value="Textos redactados"><div class="card-text">Textos redactados</div></div>
+            <div class="card" onclick="multiCard(this,'mat')"><input type="checkbox" class="mat-cb" value="Links de redes"><div class="card-text">Links de redes sociales</div></div>
+            <div class="card" onclick="multiCard(this,'mat')"><input type="checkbox" class="mat-cb" value="Nada todavía"><div class="card-text">Nada todavía</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="submit-wrap">
+        <div class="validation-msg" id="val-msg"></div>
+        <button type="submit" class="submit-btn" id="submit-btn">Enviar mi brief →</button>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- Success -->
+  <div class="success" id="success">
+    <div class="success-icon">✓</div>
+    <h2>Brief recibido.</h2>
+    <p>Revisamos tus respuestas y te escribimos<br>en las próximas 24 horas con los próximos pasos.</p>
+  </div>
+
+</div>
+
+<script>
+var f5val = '';
+var tplMap = {
+  'Landing page':     'Solo.jsx — T1',
+  'Portafolio':       'Portfolio.jsx — T2',
+  'Sitio profesional':'Business.jsx — T3',
+  'Sitio completo':   'Premium.jsx — T4'
+};
+
+function radioCard(el, val) {
+  document.querySelectorAll('#tipo-cards .card').forEach(function(c) { c.classList.remove('on'); });
+  el.classList.add('on');
+  el.querySelector('input').checked = true;
+  f5val = val;
+  document.getElementById('h-template').value = tplMap[val] || val;
+  calc();
+}
+
+function multiCard(el, group) {
+  var cb = el.querySelector('input[type=checkbox]');
+  var all = document.querySelectorAll('.' + group + '-cb');
+  var checked = Array.from(all).filter(function(c) { return c.checked; });
+  if (!cb.checked && checked.length >= 2) return;
+  cb.checked = !cb.checked;
+  el.classList.toggle('on', cb.checked);
+  syncHidden();
+  calc();
+}
+
+function syncHidden() {
+  var tonos = Array.from(document.querySelectorAll('.tono-cb:checked')).map(function(c) { return c.value; });
+  var mats  = Array.from(document.querySelectorAll('.mat-cb:checked')).map(function(c) { return c.value; });
+  document.getElementById('h-tono').value = tonos.join(', ');
+  document.getElementById('h-mats').value = mats.join(', ') || 'Ninguno';
+}
+
+function v(id) { return (document.getElementById(id) || {}).value || ''; }
+
+function calc() {
+  syncHidden();
+  var tonos = Array.from(document.querySelectorAll('.tono-cb:checked'));
+  var filled = [v('nombre'), v('que'), v('objetivo'), f5val, v('cta'), v('servicios'), tonos.length ? '1' : ''].filter(Boolean).length;
+  var pct = Math.round((filled / 7) * 100);
+  document.getElementById('pfill').style.width = pct + '%';
+  document.getElementById('pct-out').textContent = pct + '%';
+  var names = ['Negocio', 'Sitio web', 'Contenido', 'Estilo visual', 'Referencias'];
+  var idx = filled < 3 ? 0 : filled < 5 ? 1 : filled < 6 ? 2 : filled < 7 ? 3 : 4;
+  document.getElementById('blk-name').textContent = names[idx];
+}
+
+document.getElementById('intake-form').addEventListener('input', calc);
+
+document.getElementById('intake-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var msg = document.getElementById('val-msg');
+  var missing = [];
+  if (!v('nombre'))   missing.push('nombre del negocio');
+  if (!v('que'))      missing.push('descripción');
+  if (!v('objetivo')) missing.push('objetivo del sitio');
+  if (!f5val)         missing.push('tipo de sitio');
+  if (!v('cta'))      missing.push('CTA principal');
+  if (!v('servicios'))missing.push('servicios');
+  if (!document.querySelectorAll('.tono-cb:checked').length) missing.push('estilo visual');
+  if (!v('email-cliente')) missing.push('tu email');
+
+  if (missing.length) {
+    msg.textContent = 'Completá: ' + missing.join(', ') + '.';
+    msg.style.display = 'block';
+    return;
+  }
+  msg.style.display = 'none';
+
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  var form = document.getElementById('intake-form');
+  var data = new FormData(form);
+
+  fetch(form.action, {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(function(res) {
+    if (res.ok) {
+      document.getElementById('form-section').style.display = 'none';
+      document.getElementById('success').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Enviar mi brief →';
+      msg.textContent = 'Hubo un error al enviar. Intentá de nuevo.';
+      msg.style.display = 'block';
+    }
+  })
+  .catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Enviar mi brief →';
+    msg.textContent = 'Sin conexión. Revisá tu internet e intentá de nuevo.';
+    msg.style.display = 'block';
+  });
+});
+</script>
+
+</body>
+</html>
