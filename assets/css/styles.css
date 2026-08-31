@@ -528,7 +528,7 @@ hr {
 .hero__inner {
   display: grid;
   gap: clamp(2.5rem, 1rem + 5vw, 4rem);
-  align-items: center;
+  align-items: start;
 }
 
 .hero__content { max-width: 38rem; }
@@ -572,9 +572,20 @@ hr {
 .hero__figure {
   position: relative;
   margin: 0;
+  margin-top: clamp(1.75rem, 1.2rem + 1.5vw, 2.5rem);
+}
+
+.hero__figure::before {
+  content: "";
+  position: absolute;
+  inset: -3rem -2.5rem;
+  z-index: -1;
+  background: radial-gradient(closest-side, rgba(37, 99, 235, 0.32), transparent 70%);
+  filter: blur(2.5rem);
 }
 
 .hero__browser {
+  position: relative;
   border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
@@ -613,9 +624,9 @@ hr {
 }
 
 .hero__browser-content {
-  padding: var(--space-lg) var(--space-md);
+  padding: var(--space-xl) var(--space-lg);
   display: grid;
-  gap: var(--space-md);
+  gap: var(--space-lg);
 }
 
 .hero__mock-header {
@@ -665,10 +676,18 @@ hr {
 
 .hero__mock-card {
   display: block;
-  height: 3.25rem;
+  height: 3.75rem;
   border-radius: var(--radius-md);
   background-color: var(--color-surface-raised);
   border: 1px solid var(--color-border-subtle);
+}
+
+.hero__mock-cta {
+  width: 40%;
+  height: 1.1rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-brand-secondary);
+  opacity: 0.85;
 }
 
 .hero__floating-cards {
