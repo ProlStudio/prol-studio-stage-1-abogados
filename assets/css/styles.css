@@ -878,11 +878,27 @@ hr {
 
 .portfolio-card__thumb {
   position: relative;
-  padding: var(--space-md);
-  display: grid;
-  gap: var(--space-2xs);
-  background-color: var(--color-surface-raised);
+  overflow: hidden;
   border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.portfolio-card__thumb-link {
+  display: block;
+  position: relative;
+}
+
+.portfolio-card__thumb-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.portfolio-card__thumb-link:hover img,
+.portfolio-card__thumb-link:focus-visible img {
+  transform: scale(1.03);
 }
 
 .portfolio-card__thumb-badge {
@@ -896,57 +912,7 @@ hr {
   color: var(--color-text-muted);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
-}
-
-.portfolio-card__browser-bar {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  margin-bottom: var(--space-xs);
-}
-
-.portfolio-card__browser-dots {
-  display: inline-flex;
-  gap: 0.3rem;
-}
-
-.portfolio-card__browser-dots span {
-  width: 0.45rem;
-  height: 0.45rem;
-  border-radius: 50%;
-  background-color: var(--color-border-strong);
-}
-
-.portfolio-card__browser-url {
-  padding: 0.15rem 0.6rem;
-  background-color: var(--color-surface-base);
-  border-radius: var(--radius-pill);
-  color: var(--color-text-muted);
-  font-size: var(--font-size-xs);
-}
-
-.portfolio-card__browser-content {
-  display: grid;
-  gap: var(--space-2xs);
-  padding: var(--space-sm);
-  background-color: var(--color-surface-base);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-md);
-}
-
-.portfolio-card__mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.75rem;
-  height: 1.75rem;
-  margin-bottom: var(--space-2xs);
-  background-color: var(--color-brand-secondary);
-  border-radius: var(--radius-sm);
-  color: var(--color-text-on-brand);
-  font-family: var(--font-heading);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-bold);
+  pointer-events: none;
 }
 
 .portfolio-card__body {
