@@ -762,6 +762,16 @@ hr {
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
 }
 
+.card-grid--2up {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 40rem) {
+  .card-grid--2up {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .card {
   display: flex;
   flex-direction: column;
