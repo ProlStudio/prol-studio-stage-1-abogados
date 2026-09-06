@@ -150,81 +150,109 @@
       <div class="container">
         <h2 id="titulo-planes-legales" class="visually-hidden">Planes y precios</h2>
 
-        <div class="pricing-table-wrap">
-          <table class="pricing-table">
-            <caption class="visually-hidden">Comparación de planes de presencia web para estudios jurídicos</caption>
-            <thead>
-              <tr>
-                <th scope="col"><span class="visually-hidden">Característica</span></th>
-                <th scope="col">Presencia Profesional</th>
-                <th scope="col" class="pricing-table__col--featured">
-                  <span class="pricing-table__plan">
-                    Estudio Digital
-                    <span class="plan__badge">Más completo</span>
-                  </span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Implementación</th>
-                <td>USD 220 <span class="pricing-table__note">pago único</span></td>
-                <td class="pricing-table__col--featured">USD 350 <span class="pricing-table__note">pago único</span></td>
-              </tr>
-              <tr>
-                <th scope="row">Renovación / Abono anual</th>
-                <td>USD 100/año desde el año 2</td>
-                <td class="pricing-table__col--featured">USD 180/año</td>
-              </tr>
-              <tr>
-                <th scope="row">Páginas</th>
-                <td>1 página, con todas tus áreas de práctica</td>
-                <td class="pricing-table__col--featured">Multipágina: inicio, cada área de práctica con su propia página, equipo, blog, contacto</td>
-              </tr>
-              <tr>
-                <th scope="row">Contacto</th>
-                <td>WhatsApp + formulario</td>
-                <td class="pricing-table__col--featured">WhatsApp + formulario</td>
-              </tr>
-              <tr>
-                <th scope="row">Buscadores (Google e IA)</th>
-                <td>Sitio optimizado desde la base</td>
-                <td class="pricing-table__col--featured">Igual, más contenido: más páginas y blog</td>
-              </tr>
-              <tr>
-                <th scope="row">Google Business (Maps)</th>
-                <td>No incluido</td>
-                <td class="pricing-table__col--featured">Te damos el contenido listo para tu ficha; la verificación la hacés vos</td>
-              </tr>
-              <tr>
-                <th scope="row">Cambios</th>
-                <td>1 ronda incluida</td>
-                <td class="pricing-table__col--featured">2 rondas por año + mantenimiento</td>
-              </tr>
-              <tr>
-                <th scope="row">Blog</th>
-                <td>No</td>
-                <td class="pricing-table__col--featured">1 artículo nuevo por trimestre</td>
-              </tr>
-              <tr>
-                <th scope="row">Entrega</th>
-                <td>10 a 15 días hábiles</td>
-                <td class="pricing-table__col--featured">15 a 20 días hábiles</td>
-              </tr>
-              <tr>
-                <th scope="row">Ideal para</th>
-                <td>1 a 3 áreas de práctica</td>
-                <td class="pricing-table__col--featured">Estudios con más de un abogado, o que buscan posicionarse</td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td></td>
-                <td><a class="button button--secondary button--full" href="contacto.html">Consultar por este plan</a></td>
-                <td class="pricing-table__col--featured"><a class="button button--primary button--full" href="contacto.html">Consultar por este plan</a></td>
-              </tr>
-            </tfoot>
-          </table>
+        <div class="plan-grid">
+          <article class="plan">
+            <h3 class="plan__title">Presencia Profesional</h3>
+            <p class="plan__summary">
+              La presencia web esencial de un abogado o un estudio: un sitio publicado, encontrable y con
+              contacto directo.
+            </p>
+
+            <p class="plan__price">
+              USD 220
+              <span class="plan__price-note">implementación única</span>
+            </p>
+            <p class="plan__price-recurring">+ USD 100/año desde el año 2</p>
+
+            <ul class="plan__features plan__features--divided">
+              <li class="plan__feature">
+                <span class="icon icon--sm icon-check" aria-hidden="true"></span>
+                1 página, con todas tus áreas de práctica
+              </li>
+              <li class="plan__feature">
+                <span class="icon icon--sm icon-check" aria-hidden="true"></span>
+                Contacto por WhatsApp Business y formulario
+              </li>
+              <li class="plan__feature">
+                <span class="icon icon--sm icon-check" aria-hidden="true"></span>
+                Sitio optimizado desde la base para buscadores (Google e IA)
+              </li>
+              <li class="plan__feature">
+                <span class="icon icon--sm icon-check" aria-hidden="true"></span>
+                1 ronda de cambios incluida
+              </li>
+              <li class="plan__feature plan__feature--muted">
+                <span class="icon icon--sm icon-close" aria-hidden="true"></span>
+                Google Business (Maps): no incluido
+              </li>
+              <li class="plan__feature plan__feature--muted">
+                <span class="icon icon--sm icon-close" aria-hidden="true"></span>
+                Sin blog
+              </li>
+              <li class="plan__feature">
+                <span class="icon icon--sm icon-check" aria-hidden="true"></span>
+                Entrega en 10 a 15 días hábiles
+              </li>
+              <li class="plan__feature">
+                <span class="icon icon--sm icon-check" aria-hidden="true"></span>
+                Ideal para 1 a 3 áreas de práctica
+              </li>
+            </ul>
+
+            <a class="button button--secondary button--full" href="contacto.html">Consultar por este plan</a>
+          </article>
+
+          <article class="plan plan--featured">
+            <span class="plan__badge">Más completo</span>
+            <h3 class="plan__title">Estudio Digital</h3>
+            <p class="plan__summary">
+              Para estudios que además necesitan aparecer en búsquedas locales y contar con acompañamiento
+              técnico continuo.
+            </p>
+
+            <p class="plan__price">
+              USD 350
+              <span class="plan__price-note">implementación única</span>
+            </p>
+            <p class="plan__price-recurring">+ USD 180/año</p>
+
+            <ul class="plan__features plan__features--divided">
+              <li class="plan__feature">
+                <span class="icon icon--sm icon-check" aria-hidden="true"></span>
+                Multipágina: inicio, cada área de práctica, equipo, blog y contacto
+              </li>
+              <li class="plan__feature">
+                <span class="icon icon--sm icon-check" aria-hidden="true"></span>
+                Contacto por WhatsApp Business y formulario
+              </li>
+              <li class="plan__feature">
+                <span class="icon icon--sm icon-check" aria-hidden="true"></span>
+                Mismo SEO de base, más contenido: más páginas y blog
+              </li>
+              <li class="plan__feature">
+                <span class="icon icon--sm icon-check" aria-hidden="true"></span>
+                2 rondas de cambios por año, más mantenimiento
+              </li>
+              <li class="plan__feature">
+                <span class="icon icon--sm icon-check" aria-hidden="true"></span>
+                Google Business (Maps): contenido listo, la verificación la hacés vos
+              </li>
+              <li class="plan__feature">
+                <span class="icon icon--sm icon-check" aria-hidden="true"></span>
+                1 artículo de blog nuevo por trimestre
+              </li>
+              <li class="plan__feature">
+                <span class="icon icon--sm icon-check" aria-hidden="true"></span>
+                Entrega en 15 a 20 días hábiles
+              </li>
+              <li class="plan__feature">
+                <span class="icon icon--sm icon-check" aria-hidden="true"></span>
+                Ideal para estudios con más de un abogado, o que buscan posicionarse
+              </li>
+            </ul>
+
+            <a class="button button--primary button--full" href="contacto.html">Consultar por este plan</a>
+          </article>
         </div>
 
         <p class="info-note">

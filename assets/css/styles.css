@@ -1063,7 +1063,8 @@ hr {
   flex-wrap: wrap;
   align-items: baseline;
   gap: var(--space-3xs) var(--space-2xs);
-  margin-block: var(--space-sm);
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-3xs);
   padding-top: var(--space-sm);
   border-top: 1px solid var(--color-border-subtle);
   color: var(--color-text-primary);
@@ -1077,6 +1078,14 @@ hr {
   font-family: var(--font-body);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
+}
+
+.plan__price-recurring {
+  margin: 0 0 var(--space-md);
+  color: var(--color-brand-accent);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
 }
 
 .plan__features {
@@ -1099,6 +1108,15 @@ hr {
 
 .plan__feature .icon { margin-top: 0.35rem; color: var(--color-brand-secondary); }
 
+.plan__features--divided {
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.plan__feature--muted { color: var(--color-text-muted); }
+
+.plan__feature--muted .icon { color: var(--color-text-muted); }
+
 .plan__ownership {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -1120,85 +1138,6 @@ hr {
   border-top: 1px solid var(--color-border-subtle);
   color: var(--color-text-muted);
   font-size: var(--font-size-sm);
-}
-
-/* --------------------------------------------------------------------------
-   11b. Tabla comparativa de planes
-   -------------------------------------------------------------------------- */
-
-.pricing-table-wrap {
-  overflow-x: auto;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border-subtle);
-}
-
-.pricing-table {
-  width: 100%;
-  min-width: 36rem;
-  border-collapse: collapse;
-  background-color: var(--color-surface-elevated);
-  font-size: var(--font-size-sm);
-}
-
-.pricing-table th,
-.pricing-table td {
-  padding: var(--space-sm) var(--space-md);
-  text-align: left;
-  vertical-align: top;
-  border-bottom: 1px solid var(--color-border-subtle);
-}
-
-.pricing-table thead th {
-  padding-top: var(--space-md);
-  background-color: var(--color-surface-raised);
-  font-family: var(--font-heading);
-  font-size: var(--font-size-base);
-}
-
-.pricing-table tbody th {
-  color: var(--color-text-secondary);
-  font-family: var(--font-body);
-  font-weight: var(--font-weight-medium);
-  white-space: nowrap;
-}
-
-.pricing-table tbody td {
-  color: var(--color-text-primary);
-}
-
-.pricing-table tfoot td {
-  padding-top: var(--space-md);
-  padding-bottom: var(--space-md);
-  border-bottom: none;
-}
-
-.pricing-table__plan {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2xs);
-  flex-wrap: wrap;
-}
-
-.pricing-table__note {
-  display: block;
-  color: var(--color-text-muted);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-regular);
-}
-
-.pricing-table__col--featured {
-  background-color: rgba(37, 99, 235, 0.08);
-  border-left: 1px solid var(--color-border-brand);
-  border-right: 1px solid var(--color-border-brand);
-}
-
-.pricing-table thead .pricing-table__col--featured {
-  border-top: 1px solid var(--color-border-brand);
-  color: var(--color-brand-accent);
-}
-
-.pricing-table tfoot .pricing-table__col--featured {
-  border-bottom: 1px solid var(--color-border-brand);
 }
 
 /* --------------------------------------------------------------------------
