@@ -39,6 +39,8 @@
   --color-focus-ring: #93C5FD;
   --color-whatsapp: #25D366;
   --color-whatsapp-strong: #1FB65B;
+  --color-badge-featured: #FBBF24;
+  --color-badge-featured-text: #1F1300;
 
   /* Tipografía */
   --font-heading: "Poppins", "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -357,6 +359,20 @@ hr {
 .button--tertiary:hover { color: var(--color-brand-accent); }
 
 .button--full { width: 100%; }
+
+.button--pill { border-radius: var(--radius-pill); }
+
+.button--invert {
+  background-color: var(--color-text-on-brand);
+  border-color: var(--color-text-on-brand);
+  color: var(--color-brand-primary-strong);
+}
+
+.button--invert:hover {
+  background-color: #E2E8F0;
+  border-color: #E2E8F0;
+  color: var(--color-brand-primary-strong);
+}
 
 .button--whatsapp {
   background-color: var(--color-whatsapp);
@@ -1080,14 +1096,6 @@ hr {
   font-weight: var(--font-weight-regular);
 }
 
-.plan__price-recurring {
-  margin: 0 0 var(--space-md);
-  color: var(--color-brand-accent);
-  font-family: var(--font-heading);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
-}
-
 .plan__features {
   flex: 1;
   margin: 0 0 var(--space-md);
@@ -1107,15 +1115,6 @@ hr {
 }
 
 .plan__feature .icon { margin-top: 0.35rem; color: var(--color-brand-secondary); }
-
-.plan__features--divided {
-  padding-top: var(--space-md);
-  border-top: 1px solid var(--color-border-subtle);
-}
-
-.plan__feature--muted { color: var(--color-text-muted); }
-
-.plan__feature--muted .icon { color: var(--color-text-muted); }
 
 .plan__ownership {
   display: grid;
@@ -1139,6 +1138,140 @@ hr {
   color: var(--color-text-muted);
   font-size: var(--font-size-sm);
 }
+
+/* --------------------------------------------------------------------------
+   11b. Tarjetas de precio (planes del rubro legal)
+   -------------------------------------------------------------------------- */
+
+.pricing-cards {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  align-items: start;
+}
+
+.pricing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-lg);
+  background-color: var(--color-surface-elevated);
+  border-radius: var(--radius-xl);
+}
+
+.pricing-card--featured {
+  margin-top: var(--space-md);
+  background-color: var(--color-brand-primary);
+}
+
+.pricing-card__badge {
+  position: absolute;
+  top: calc(-1 * var(--space-sm));
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.3rem 0.9rem;
+  background-color: var(--color-badge-featured);
+  border-radius: var(--radius-pill);
+  color: var(--color-badge-featured-text);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.pricing-card__name {
+  margin-bottom: var(--space-2xs);
+  color: var(--color-text-muted);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-eyebrow);
+  text-transform: uppercase;
+}
+
+.pricing-card--featured .pricing-card__name { color: var(--color-text-on-brand); }
+
+.pricing-card__summary {
+  margin-bottom: var(--space-md);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.pricing-card--featured .pricing-card__summary { color: rgba(255, 255, 255, 0.85); }
+
+.pricing-card__price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-3xs) var(--space-2xs);
+  color: var(--color-text-primary);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.pricing-card--featured .pricing-card__price { color: var(--color-text-on-brand); }
+
+.pricing-card__price-note {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+}
+
+.pricing-card--featured .pricing-card__price-note { color: rgba(255, 255, 255, 0.75); }
+
+.pricing-card__recurring {
+  margin-top: var(--space-3xs);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.pricing-card--featured .pricing-card__recurring {
+  color: var(--color-text-on-brand);
+  font-weight: var(--font-weight-semibold);
+}
+
+.pricing-card__divider {
+  margin-block: var(--space-md);
+  border: none;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.pricing-card--featured .pricing-card__divider { border-top-color: rgba(255, 255, 255, 0.25); }
+
+.pricing-card__features {
+  flex: 1;
+  margin: 0 0 var(--space-lg);
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--space-sm);
+  font-size: var(--font-size-sm);
+}
+
+.pricing-card__feature {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-2xs);
+  align-items: start;
+  color: var(--color-text-secondary);
+}
+
+.pricing-card--featured .pricing-card__feature { color: var(--color-text-on-brand); }
+
+.pricing-card__feature .icon { margin-top: 0.15rem; color: var(--color-brand-secondary); }
+
+.pricing-card--featured .pricing-card__feature .icon { color: var(--color-text-on-brand); }
+
+.pricing-card__feature--muted { color: var(--color-text-muted); }
+
+.pricing-card--featured .pricing-card__feature--muted { color: rgba(255, 255, 255, 0.6); }
+
+.pricing-card__feature--muted .icon { color: var(--color-text-muted); }
+
+.pricing-card--featured .pricing-card__feature--muted .icon { color: rgba(255, 255, 255, 0.6); }
 
 /* --------------------------------------------------------------------------
    12. Preguntas frecuentes
