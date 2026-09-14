@@ -148,24 +148,22 @@ definitivo de precios, revisar ambas listas junto con los importes.
 
 ### 4.2 Contenido legal
 
-Las tres páginas legales existen y están enlazadas, pero el brief no aportó su contenido definitivo.
-Siguiendo PROL_BASE, no se redactó contenido legal ficticio: cada cláusula pendiente aparece como un
-bloque visible y claramente identificado.
+Las tres páginas legales están completas. Los bloques `legal-placeholder` que originalmente marcaban
+contenido pendiente (5 en `politica-de-privacidad.html`, 6 en `terminos-y-condiciones.html` y 4 en
+`politica-de-reembolso.html`) fueron reemplazados por el texto definitivo, redactado a partir de
+`PROL_Abogados_Pricing_y_Guia_de_Entrevista.md` y de las decisiones confirmadas por Franco: pago de
+implementación 100% por adelantado, Factura C (Monotributista), baja del abono de acompañamiento sin
+aviso previo, sin analítica ni cookies de terceros en el sitio, y jurisdicción en los tribunales
+ordinarios de la ciudad de Córdoba.
 
-| Archivo | Bloques pendientes |
-| --- | --- |
-| `politica-de-privacidad.html` | 5 |
-| `terminos-y-condiciones.html` | 6 |
-| `politica-de-reembolso.html` | 4 |
+Verificación: `grep -rn 'legal-placeholder' .` no debería devolver resultados en ninguna de las tres
+páginas.
 
-Para localizarlos: `grep -rn 'legal-placeholder__label' .`
-
-Cada bloque describe qué texto debe incorporarse. El contenido factual que sí estaba disponible
-(responsable, ubicación, canales de contacto, esquema de implementación + abono opcional, propiedad
-del sitio, funcionamiento del formulario) ya está redactado fuera de esos bloques.
-
-Pendiente relacionado señalado en el brief: la confirmación contable del tipo y la oportunidad del
-comprobante AFIP. El sitio menciona "el comprobante AFIP correspondiente", sin especificar el tipo.
+Punto señalado para revisión legal profesional (no bloqueante, riesgo bajo dado el monto y el perfil
+de cliente): la cláusula de no reembolso de la implementación una vez iniciada la producción se apoya
+en la excepción de servicios personalizados del art. 1116 inciso c del Código Civil y Comercial. Vale
+confirmarla con un abogado si en algún momento se factura en mayor volumen o un cliente la discute
+formalmente.
 
 ---
 
