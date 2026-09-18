@@ -127,24 +127,32 @@ Por indicación del brief se optó por señalarlo en lugar de reutilizarlo en si
 
 ---
 
-## 4. Marcadores de producción pendientes de reemplazo
+## 4. Estado de precios y contenido legal
 
 ### 4.1 Valores de los planes
 
-Los importes de los planes del rubro legal no figuran en el Production Brief, por lo que no se
-inventaron. El sitio muestra "Consultar" en un elemento marcado y verificable:
+Los planes tienen precios reales en pesos argentinos, vigentes desde la actualización de oferta
+comercial de septiembre de 2026:
 
-| Archivo | Selector | Contenido actual |
+| Plan | Implementación | Renovación anual (desde el año 2) |
 | --- | --- | --- |
-| `servicios.html` | `[data-prol-placeholder="precio-presencia-profesional"]` | `Consultar` |
-| `servicios.html` | `[data-prol-placeholder="precio-estudio-digital"]` | `Consultar` |
+| Presencia Profesional | ARS 385.000 | ARS 155.000/año |
+| Estudio Digital | ARS 495.000 | ARS 245.000/año |
 
-Para localizarlos: `grep -rn 'data-prol-placeholder' .`
+El primer año de servicio está incluido en la implementación de ambos planes. Estos valores están
+publicados en `servicios.html` (tarjetas de precios y FAQ, tanto en el HTML visible como en el
+JSON-LD), replicados en `index.html` y descriptos en `terminos-y-condiciones.html` y
+`politica-de-reembolso.html`. No hay marcadores de tipo "Consultar" pendientes de reemplazo.
 
-El alcance definitivo de cada plan tampoco está detallado en el brief. Las listas de características
-sólo incluyen prestaciones explícitamente respaldadas por él, y una nota bajo los planes aclara que
-los valores y el alcance final se informan en la primera consulta. Al incorporar el documento
-definitivo de precios, revisar ambas listas junto con los importes.
+Dos valores quedan deliberadamente sin definir, por decisión explícita de Franco (no del brief): el
+costo de una página adicional, rediseño o integración fuera de alcance, y la tarifa de trabajo de
+migración/hora. Ambos se describen en el sitio como "se cotiza aparte según el alcance/tiempo
+dedicado", sin monto fijo. Se van a definir cuando se trabaje el modelo económico completo de PROL —
+no reutilizar automáticamente la tarifa histórica de USD 30/hora que figuraba en
+`PROL_Abogados_Pricing_y_Guia_de_Entrevista.md` antes de esta actualización; ese valor quedó marcado
+ahí como histórico, no vigente. Si se define un valor nuevo, actualizar la nota correspondiente en
+`servicios.html` (sección de info debajo de las tarjetas) y en `terminos-y-condiciones.html`
+("Contratación y alcance del servicio" y "Propiedad del sitio").
 
 ### 4.2 Contenido legal
 
@@ -152,9 +160,21 @@ Las tres páginas legales están completas. Los bloques `legal-placeholder` que 
 contenido pendiente (5 en `politica-de-privacidad.html`, 6 en `terminos-y-condiciones.html` y 4 en
 `politica-de-reembolso.html`) fueron reemplazados por el texto definitivo, redactado a partir de
 `PROL_Abogados_Pricing_y_Guia_de_Entrevista.md` y de las decisiones confirmadas por Franco: pago de
-implementación 100% por adelantado, Factura C (Monotributista), baja del abono de acompañamiento sin
-aviso previo, sin analítica ni cookies de terceros en el sitio, y jurisdicción en los tribunales
-ordinarios de la ciudad de Córdoba.
+implementación 100% por adelantado, Factura C (Monotributista), baja de la renovación anual sin aviso
+previo, sin analítica ni cookies de terceros en el sitio, y jurisdicción en los tribunales ordinarios
+de la ciudad de Córdoba.
+
+En septiembre de 2026 se actualizaron además los tres textos legales (y las páginas `index.html` y
+`servicios.html`) para reflejar la oferta comercial vigente: precios en ARS, primer año incluido,
+renovación anual como continuidad del servicio (no como "abono de acompañamiento" opcional), y el
+límite de 4 artículos/año de Estudio Digital.
+
+`terminos-y-condiciones.html` ("Vigencia, renovación y baja") establece explícitamente que la falta
+de renovación puede llevar a PROL Studio a suspender el servicio (dominio, hosting y, en Estudio
+Digital, blog/actualizaciones) y que el sitio puede quedar fuera de línea, pero que esto no implica
+por sí solo la eliminación de los archivos o el contenido del cliente. Queda pendiente (señalado, no
+definido) fijar un procedimiento y un plazo formal de conservación de archivos posterior a la falta
+de renovación — no se inventó un plazo, es una decisión explícita de no fijarlo todavía.
 
 Verificación: `grep -rn 'legal-placeholder' .` no debería devolver resultados en ninguna de las tres
 páginas.
